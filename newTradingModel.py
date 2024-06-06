@@ -9,10 +9,16 @@ from keras.initializers import random_uniform
 
 import tensorflow as tf
 #from tensorflow.initializers import random_uniform
+import matplotlib
+#matplotlib.use('TkAgg')
+#matplotlib inline
 import matplotlib.pyplot as plt
+
+
 ##import pickle
 
 ##tf.compat.v1.disable_eager_execution()
+
 
 def load_csv(filepath):
     data =  []
@@ -32,12 +38,12 @@ def load_csv(filepath):
 
 Episode = 0
 
-dfAAPL =pd.read_csv("C:/Temp/TradingPaper/AAPLIntradayTestOf5-1-2017.csv")              #dfAAPL = pd.read_csv("C:/Temp/TradingPaper/AAPLIntradayOf5-1-2017.csv")
-dfGOOG = pd.read_csv("C:/Temp/TradingPaper/GOOGIntradayTestOf5-1-2017.csv")
-dfT = pd.read_csv("C:/Temp/TradingPaper/TIntradayTestOf5-1-2017.csv")
-dfVZ = pd.read_csv("C:/Temp/TradingPaper/VZIntradayTestOf5-1-2017.csv")
-dfXOM = pd.read_csv("C:/Temp/TradingPaper/XOMIntradayTestOf5-1-2017.csv")
-dfIBM = pd.read_csv("C:/Temp/TradingPaper/IBMIntradayTestOf5-1-2017.csv")
+dfAAPL =pd.read_csv("/home/mouspem/codes/optimaltradingml/AAPLIntradayTestOf5-1-2017.csv")              #dfAAPL = pd.read_csv("C:/Temp/TradingPaper/AAPLIntradayOf5-1-2017.csv")
+dfGOOG = pd.read_csv("/home/mouspem/codes/optimaltradingml/GOOGIntradayTestOf5-1-2017.csv")
+dfT = pd.read_csv("/home/mouspem/codes/optimaltradingml/TIntradayTestOf5-1-2017.csv")
+dfVZ = pd.read_csv("/home/mouspem/codes/optimaltradingml/VZIntradayTestOf5-1-2017.csv")
+dfXOM = pd.read_csv("/home/mouspem/codes/optimaltradingml/XOMIntradayTestOf5-1-2017.csv")
+dfIBM = pd.read_csv("/home/mouspem/codes/optimaltradingml/IBMIntradayTestOf5-1-2017.csv")
 
 
 
@@ -694,6 +700,11 @@ class TradingEnv(gym.Env):
         ax.set_xlabel("x")
         ax.set_ylabel("y")
         plt.show()
+        #txt1 = "My name is {fname}, I'm {age}".format(fname="John", age=36)
+        #txt2 = "My name is {0}, I'm {1}".format("John", 36)
+        #txt3 = "My name is {}, I'm {}".format("John", 36)
+        graphPath = '/home/mouspem/codes/optimaltradingml/tradingGraphs/' + stockLabel + '.png'
+        plt.savefig(graphPath)
 
 
 

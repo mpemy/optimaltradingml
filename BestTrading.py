@@ -1,6 +1,7 @@
 import numpy as np
 import tensorflow as tf 
 import gym
+import keras
 import tensorflow_probability as tfp
 from newTradingModel import TradingEnv
 
@@ -46,13 +47,13 @@ class agent():
         self.actor = actor()
         self.critic = critic()
         self.log_prob = None
-        self.stockAllocations = np.ones([12], dtype=np.float)
+        self.stockAllocations = np.ones([12], dtype= float)
         self.stockAllocations =[-30, -20,-10, 0, 10, 20, 40, 60, 70, 80, 90, 100 ]
 
     def act(self,state):
         #tem = np.asarray([state])
-        shape = np.shape(state)
-        if shape[0] == 2:
+        shape = len(state)
+        if shape == 2:
           data = tf.convert_to_tensor([state[0]], dtype= np.float32)
         else:
           data = tf.convert_to_tensor([state], dtype= np.float32)       
@@ -91,13 +92,13 @@ class agent():
 
     def learn(self, state, action, reward, next_state, done):
 
-        shape = np.shape(state)
-        if shape[0] == 2:
+        shape = len(state)
+        if shape == 2:
           data = tf.convert_to_tensor([state[0]], dtype= np.float32)
         else:
           data = tf.convert_to_tensor([state], dtype= np.float32)
         state0 = data
-        state = np.array([state])
+        #state = np.array([state])
         ##state0 = tf.convert_to_tensor(state[0], dtype= np.float32)
         next_state0 = tf.convert_to_tensor([next_state], dtype= np.float32)
         next_state = np.array([next_state])
